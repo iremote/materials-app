@@ -9,8 +9,16 @@ import Box from '@mui/material/Box';
 import ThemeProvider from '@mui/material/styles/ThemeProvider';
 import {defaultTheme} from './theme/defaultTheme';
 
+const defaultStructure = `
+3
+water molecule
+O 0.000000 0.000000 0.000000
+H 0.758602 0.504284 0.000000
+H 0.758602 -0.504284 0.000000
+`.trim();
+
 function App() {
-	const [structure, setStructure] = useState<string>();
+	const [structure, setStructure] = useState<string>(defaultStructure);
 	const handleSourceChange = (newSource: string) => {
 		setStructure(newSource);
 	};
@@ -20,7 +28,7 @@ function App() {
 			<StyledGrid2 container>
 				<Grid2 xs={12} sm={6}>
 					<ResponsiveBox>
-						<SourceViewer onChange={handleSourceChange}/>
+						<SourceViewer defaultValue={structure} onChange={handleSourceChange}/>
 					</ResponsiveBox>
 				</Grid2>
 				<Grid2 xs={12} sm={6}>
