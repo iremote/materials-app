@@ -14,7 +14,6 @@ const SourceViewer: React.FC<SourceViewerProps> = ({onChange}) => {
 
 	return (
 		<MonacoEditor
-			height="100%"
 			language="plaintext"
 			theme="vs-dark"
 			options={{
@@ -25,7 +24,7 @@ const SourceViewer: React.FC<SourceViewerProps> = ({onChange}) => {
 				minimap: {
 					enabled: false
 				},
-				fontSize: 16,
+				lineHeight: 1.8,
 				automaticLayout: true,
 				wordWrap: 'on',
 				wrappingIndent: 'same',
