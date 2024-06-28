@@ -4,8 +4,10 @@ import Navbar from './components/Navbar/Navbar';
 import SourceViewer from './components/SourceViewer/SourceViewer';
 import StructureViewer from './components/StructureViewer/StructureViewer';
 import Grid2 from '@mui/material/Unstable_Grid2';
-import {styled} from '@mui/system';
-import {Box} from '@mui/material';
+import styled from '@mui/system/styled';
+import Box from '@mui/material/Box';
+import ThemeProvider from '@mui/material/styles/ThemeProvider';
+import {defaultTheme} from './theme/defaultTheme';
 
 function App() {
 	const [structure, setStructure] = useState<string>();
@@ -13,7 +15,7 @@ function App() {
 		setStructure(newSource);
 	};
 	return (
-		<>
+		<ThemeProvider theme={defaultTheme}>
 			<Navbar/>
 			<StyledGrid2 container>
 				<Grid2 xs={12} sm={6}>
@@ -27,7 +29,7 @@ function App() {
 					</ResponsiveBox>
 				</Grid2>
 			</StyledGrid2>
-		</>
+		</ThemeProvider>
 	);
 }
 

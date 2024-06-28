@@ -15,16 +15,18 @@ const Navbar: React.FC<NavbarProps> = () => {
 		setAnchorElNav(null);
 	};
 	return (
-		<AppBar position={'fixed'}>
+		<AppBar position={'fixed'} color={'primary'} elevation={0}>
 			<Toolbar disableGutters>
 				<LogoIcon/>
 				<LogoText variant={'h6'}>MAT</LogoText>
-				<Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}}}>
+				<Box sx={{flexGrow: 1, display: {xs: 'none', sm: 'flex'}}}>
 					{links.map((page) => (
 						<Button
+							variant={'text'}
+							color={'inherit'}
 							key={page}
 							onClick={handleCloseNavMenu}
-							sx={{my: 2, color: 'white', display: 'block'}}
+							sx={{my: 0, display: 'block'}}
 						>
 							{page}
 						</Button>
@@ -42,7 +44,7 @@ export default Navbar;
 const LogoIcon = styled(SwitchAccessShortcutAddIcon)(({theme}) => ({
 	display: 'none',
 	margin: theme.spacing(0, 2),
-	[theme.breakpoints.up('md')]: {
+	[theme.breakpoints.up('sm')]: {
 		display: 'flex',
 	},
 }));
