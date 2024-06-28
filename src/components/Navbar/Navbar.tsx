@@ -1,7 +1,7 @@
 import React from 'react';
 import {AppBar, Box, Button, Typography} from '@mui/material';
 import Toolbar from '@mui/material/Toolbar';
-import SwitchAccessShortcutAddIcon from '@mui/icons-material/SwitchAccessShortcutAdd';
+import DeviceHubIcon from '@mui/icons-material/DeviceHub';
 import {styled} from '@mui/material/styles';
 
 export interface NavbarProps {
@@ -18,7 +18,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 		<AppBar position={'fixed'} color={'primary'} elevation={0}>
 			<Toolbar disableGutters>
 				<LogoIcon/>
-				<LogoText variant={'h6'}>MAT</LogoText>
+				<LogoText variant={'h6'}>MAT3</LogoText>
 				<Box sx={{flexGrow: 1, display: {xs: 'none', sm: 'flex'}}}>
 					{links.map((page) => (
 						<Button
@@ -41,7 +41,7 @@ export default Navbar;
 
 // Styles
 
-const LogoIcon = styled(SwitchAccessShortcutAddIcon)(({theme}) => ({
+const LogoIcon = styled(DeviceHubIcon)(({theme}) => ({
 	display: 'none',
 	margin: theme.spacing(0, 2),
 	[theme.breakpoints.up('sm')]: {
