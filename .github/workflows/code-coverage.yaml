@@ -36,6 +36,6 @@ jobs:
         run: yarn test:ci-coverage
 
       - name: Upload Coverage to Quality Tool
-        run: ../scripts/upload_coverage.sh
+        run: ../scripts/upload-codecov.sh
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
