@@ -1,10 +1,16 @@
 #!/bin/bash
 
+dir=$(dirname "$0") && app_root=$(cd "$dir"/../.. || exit; pwd)
+
+CC_TEST_REPORTER_ID='d0f0d2c7f5b25c8dc60cb40870156d85af2a0b714a1ab6eee2de7e1ed6123223'
+
 # Check if CC_TEST_REPORTER_ID is set
 if [ -z "$CC_TEST_REPORTER_ID" ]; then
   echo "Error: CC_TEST_REPORTER_ID environment variable is not set."
   exit 1
 fi
+
+cd $app_root
 
 # Create temporary directory
 mkdir -p tmp/
@@ -23,7 +29,10 @@ fi
 chmod +x tmp/cc-test-reporter
 
 # Format coverage for Code Climate
-tmp/cc-test-reporter format-coverage -t lcov coverage/lcov.info -o "coverage/codeclimate.${RUNNER_OS:-local}.json"
+tmp/cc-test-reporter format-coverage -t lcov "coverage/lcov.info" -o "coverage/codeclimate.${RUNNER_OS:-local}.json"
+
+# Upload coverage to Code Climate
+tmp/cc-test-reporter sum-coverage --output - coverage/codeclimate.*.json | tmp/cc-test-reporter upload-coverage -r ${CC_TEST_REPORTER_ID} --debug --input -
 
 # Clean up temporary files
 rm -rf tmp/
