@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import ThemeProvider from '@mui/material/styles/ThemeProvider';
+import {ThemeProvider} from '@mui/material/styles';
 import {defaultTheme} from './theme/defaultTheme';
 import IdePage from './pages/IdePage/IdePage';
 

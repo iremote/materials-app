@@ -1,5 +1,5 @@
 import {responsiveFontSizes, ThemeOptions} from '@mui/material/styles';
-import createTheme, {Theme} from '@mui/material/styles/createTheme';
+import {createTheme, Theme} from '@mui/material/styles';
 
 const themeOptions: ThemeOptions = {
 	palette: {
