@@ -36,7 +36,7 @@ jobs:
         run: yarn install
 
       - name: Run Tests with Coverage
-        run: yarn test:coverage
+        run: yarn test:ci-coverage
 
       - name: Upload Coverage to Quality Tool
         run: |
