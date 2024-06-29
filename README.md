@@ -52,6 +52,10 @@ This will launch the app at [http://localhost:3000](http://localhost:3000).
 We use CRA (Create React App) supplied tooling (nyc, istanbul, etc.) for testing and coverage.
 `package.json` has the scripts to run tests and coverage.
 
+## Deployment
+
+Refer to [README-prod.md](./README-prod.md) for production deployment.
+
 ## Contributors & Authors
 
 Ramesh Doddi <ramesh@iremote.ai>
