@@ -52,27 +52,9 @@ This will launch the app at [http://localhost:3000](http://localhost:3000).
 We use CRA (Create React App) supplied tooling (nyc, istanbul, etc.) for testing and coverage.
 `package.json` has the scripts to run tests and coverage.
 
-## Building for Production
+## Deployment
 
-### CI/CD
-
-We use GitHub Actions for CI/CD. Refer to `.github/workflows` for the workflow.
-
-### Manual
-
-```bash
-yarn build
-```
-
-```bash
-docker build . -t iremote.ai/materials-app:latest
-```
-
-```bash
-docker run -p 3080:80 iremote.ai/materials-app:latest
-```
-
-App will be available at [http://localhost:3080](http://localhost:3080).
+Refer to [README-prod.md](./README-prod.md) for production deployment.
 
 ## Contributors & Authors
 
