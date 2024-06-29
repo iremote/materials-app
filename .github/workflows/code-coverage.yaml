@@ -32,10 +32,5 @@ jobs:
         run: |
           tmp/cc-test-reporter format-coverage -t lcov coverage/lcov.info -o "coverage/codeclimate.${{ runner.os }}.json"
 
-      - name: Upload coverage to quality tool
-        run: |
-          curl -X POST https://api.quality-tool.com/upload-coverage \
-            -H "Authorization: Bearer ${{ secrets.CODECOV_REPORTER_ID }}" \
-            -F "file=@./coverage/lcov.info"
         env:
           CODECOV_REPORTER_ID: ${{ secrets.CODECOV_REPORTER_ID }}
