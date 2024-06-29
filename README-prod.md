@@ -1,7 +1,7 @@
 # Production Ready Deployment
 
 We use Kubernetes or similar container orchestration tools for production deployment.
-The Following instructions will help you to deploy the app on your local machine with similar setup.
+The Following instructions will help you to deploy the app on your local machine with a similar setup.
 
 ## Building Container Image (Docker)
 
