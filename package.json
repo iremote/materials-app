@@ -22,6 +22,7 @@
     "@babel/core": "^7.24.7",
     "@babel/plugin-syntax-flow": "^7.24.7",
     "@babel/plugin-transform-react-jsx": "^7.24.7",
+    "@babel/preset-react": "^7.24.7",
     "@chromatic-com/storybook": "^1.5.0",
     "@storybook/addon-essentials": "^8.1.11",
     "@storybook/addon-interactions": "^8.1.11",
@@ -35,20 +36,24 @@
     "@testing-library/dom": "^10.2.0",
     "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
+    "@types/jest": "^29.5.12",
     "@types/node": "^16.18.101",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/three": "^0.165.0",
+    "babel-jest": "^29.7.0",
     "create-tsx": "^0.2.4",
     "eslint": "8.39.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-storybook": "^0.8.0",
     "glob": "^10.4.2",
+    "jest": "^29.7.0",
+    "jest-webgl-canvas-mock": "^2.5.3",
     "monaco-editor": "0.28.1",
     "react-scripts": "^5.0.1",
     "rimraf": "^5.0.7",
     "storybook": "^8.1.11",
+    "ts-jest": "^29.1.5",
     "typescript": "^4.9.5",
     "webpack": "^5.92.1",
     "workbox-webpack-plugin": "^7.1.0"
@@ -57,7 +62,8 @@
     "clean": "rm -rf node_modules && rm -rf package-lock.json && rm -rf yarn.lock",
     "start": "GENERATE_SOURCEMAP=false react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest --coverage",
+    "test:coverage": "react-scripts test --coverage --ci --watchAll=false",
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
@@ -79,6 +85,23 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest",
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/**/*.stories.{js,jsx,ts,tsx}",
+      "!**/node_modules/**",
+      "!**/index.ts",
+      "!src/App.tsx",
+      "!src/index.tsx",
+      "!src/react-app-env.d.ts",
+      "!src/reportWebVitals.ts",
+      "!src/theme/**"
     ]
   }
 }

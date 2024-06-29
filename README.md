@@ -47,6 +47,11 @@ yarn start
 
 This will launch the app at [http://localhost:3000](http://localhost:3000).
 
+## Quality
+
+We use CRA (Create React App) supplied tooling (nyc, istanbul, etc.) for testing and coverage.
+`package.json` has the scripts to run tests and coverage.
+
 ## Contributors & Authors
 
 Ramesh Doddi <ramesh@iremote.ai>
