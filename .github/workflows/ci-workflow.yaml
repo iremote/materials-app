@@ -7,9 +7,15 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      publish_snapshot:
+        # Note: GitHub packages are not available for free plans.
+        description: 'Set to true to enable the publish_snapshot job'
+        required: true
+        default: 'false'
 
 jobs:
-
   test:
     runs-on: ubuntu-latest
     steps:
@@ -44,6 +50,7 @@ jobs:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
 
   publish_snapshot:
+    if: ${{ github.event.inputs.publish_snapshot == 'true' }}
     needs: test
     runs-on: ubuntu-latest
     steps:
