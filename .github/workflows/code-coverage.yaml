@@ -33,4 +33,4 @@ jobs:
           tmp/cc-test-reporter format-coverage -t lcov coverage/lcov.info -o "coverage/codeclimate.${{ runner.os }}.json"
 
         env:
-          CODECOV_REPORTER_ID: ${{ secrets.CODECOV_REPORTER_ID }}
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
