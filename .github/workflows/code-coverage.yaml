@@ -22,6 +22,16 @@ jobs:
       - name: Run tests with coverage
         run: yarn test:ci-coverage
 
+      - name: Configure Code Climate environment
+        run: |
+          mkdir tmp/
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 -o tmp/cc-test-reporter
+          chmod +x tmp/cc-test-reporter
+
+      - name: Format Code Climate Parallel Coverage
+        run: |
+          tmp/cc-test-reporter format-coverage -t lcov coverage/lcov.info -o "coverage/codeclimate.${{ runner.os }}.json"
+
       - name: Upload coverage to quality tool
         run: |
           curl -X POST https://api.quality-tool.com/upload-coverage \
