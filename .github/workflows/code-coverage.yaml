@@ -1,0 +1,31 @@
+name: Code Coverage
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run tests with coverage
+        run: yarn test:ci-coverage
+
+      - name: Upload coverage to quality tool
+        run: |
+          curl -X POST https://api.quality-tool.com/upload-coverage \
+            -H "Authorization: Bearer ${{ secrets.CODECOV_REPORTER_ID }}" \
+            -F "file=@./coverage/lcov.info"
+        env:
+          CODECOV_REPORTER_ID: ${{ secrets.CODECOV_REPORTER_ID }}
