@@ -2,9 +2,11 @@
 
 Demo app for visualizing materials data using [XYZ](https://en.wikipedia.org/wiki/XYZ_file_format) file format.
 
+![screenshot.png](docs/screenshot.png)
+
 ## Architecture
 
-TBD
+![webapp-infra.png](docs/webapp-infra.png)
 
 ## Development
 
