@@ -4,6 +4,6 @@ import { SourceViewer } from './';
 describe('SourceViewer', () => {
   it('renders without crashing', () => {
     render(<SourceViewer />);
-    expect(screen.getByText(/Test/i, {})).toBeTruthy();
+    expect(screen.getByText(/Loading.../i, {})).toBeTruthy();
   });
 });

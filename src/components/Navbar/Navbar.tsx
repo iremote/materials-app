@@ -1,13 +1,13 @@
 import React from 'react';
 import {AppBar, Box, Button, Typography} from '@mui/material';
 import Toolbar from '@mui/material/Toolbar';
-import SwitchAccessShortcutAddIcon from '@mui/icons-material/SwitchAccessShortcutAdd';
+import DeviceHubIcon from '@mui/icons-material/DeviceHub';
 import {styled} from '@mui/material/styles';
 
 export interface NavbarProps {
 }
 
-const links = ['Import', 'Edit', 'Help'];
+const links = ['Menu1', 'Menu2', 'Menu3'];
 
 const Navbar: React.FC<NavbarProps> = () => {
 	const [, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -15,19 +15,16 @@ const Navbar: React.FC<NavbarProps> = () => {
 		setAnchorElNav(null);
 	};
 	return (
-		<AppBar position={'fixed'}>
+		<AppBar position={'fixed'} color={'primary'} elevation={0}>
 			<Toolbar disableGutters>
 				<LogoIcon/>
-				<LogoText variant={'h6'}>MAT</LogoText>
-				<Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}}}>
+				<LogoText variant={'h6'}>MAT3</LogoText>
+				{/* for now, use the same menu for all sizes */}
+				<Box sx={{flexGrow: 1, display: {xs: 'flex', sm: 'flex'}}}>
 					{links.map((page) => (
-						<Button
-							key={page}
-							onClick={handleCloseNavMenu}
-							sx={{my: 2, color: 'white', display: 'block'}}
-						>
+						<MenuButton variant={'text'} key={page} onClick={handleCloseNavMenu}>
 							{page}
-						</Button>
+						</MenuButton>
 					))}
 				</Box>
 			</Toolbar>
@@ -39,10 +36,10 @@ export default Navbar;
 
 // Styles
 
-const LogoIcon = styled(SwitchAccessShortcutAddIcon)(({theme}) => ({
+const LogoIcon = styled(DeviceHubIcon)(({theme}) => ({
 	display: 'none',
 	margin: theme.spacing(0, 2),
-	[theme.breakpoints.up('md')]: {
+	[theme.breakpoints.up('sm')]: {
 		display: 'flex',
 	},
 }));
@@ -57,4 +54,8 @@ const LogoText = styled(Typography)(({theme}) => ({
 	[theme.breakpoints.up('md')]: {
 		display: 'block',
 	},
+}));
+
+const MenuButton = styled(Button)(() => ({
+	color: 'inherit',
 }));

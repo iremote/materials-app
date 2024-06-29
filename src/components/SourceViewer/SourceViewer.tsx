@@ -2,10 +2,11 @@ import React from 'react';
 import MonacoEditor from '@monaco-editor/react';
 
 export interface SourceViewerProps {
+	defaultValue?: string;
 	onChange?: (value: string) => void;
 }
 
-const SourceViewer: React.FC<SourceViewerProps> = ({onChange}) => {
+const SourceViewer: React.FC<SourceViewerProps> = ({defaultValue, onChange}) => {
 	const handleEditorChange = (value: string | undefined) => {
 		if (value !== undefined && onChange) {
 			onChange(value);
@@ -14,6 +15,7 @@ const SourceViewer: React.FC<SourceViewerProps> = ({onChange}) => {
 
 	return (
 		<MonacoEditor
+			defaultValue={defaultValue}
 			language="plaintext"
 			theme="vs-dark"
 			options={{
