@@ -7,7 +7,7 @@ import {styled} from '@mui/material/styles';
 export interface NavbarProps {
 }
 
-const links = ['Import', 'Edit', 'Help'];
+const links = ['Menu1', 'Menu2', 'Menu3'];
 
 const Navbar: React.FC<NavbarProps> = () => {
 	const [, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -19,17 +19,12 @@ const Navbar: React.FC<NavbarProps> = () => {
 			<Toolbar disableGutters>
 				<LogoIcon/>
 				<LogoText variant={'h6'}>MAT3</LogoText>
-				<Box sx={{flexGrow: 1, display: {xs: 'none', sm: 'flex'}}}>
+				{/* for now, use the same menu for all sizes */}
+				<Box sx={{flexGrow: 1, display: {xs: 'flex', sm: 'flex'}}}>
 					{links.map((page) => (
-						<Button
-							variant={'text'}
-							color={'inherit'}
-							key={page}
-							onClick={handleCloseNavMenu}
-							sx={{my: 0, display: 'block'}}
-						>
+						<MenuButton variant={'text'} key={page} onClick={handleCloseNavMenu}>
 							{page}
-						</Button>
+						</MenuButton>
 					))}
 				</Box>
 			</Toolbar>
@@ -59,4 +54,8 @@ const LogoText = styled(Typography)(({theme}) => ({
 	[theme.breakpoints.up('md')]: {
 		display: 'block',
 	},
+}));
+
+const MenuButton = styled(Button)(() => ({
+	color: 'inherit',
 }));
