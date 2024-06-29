@@ -1,3 +1,6 @@
+# Runs tests and uploads code coverage to code coverage tool
+# Author: ramesh@iremote.ai
+
 name: Code Coverage
 
 on:
@@ -14,18 +17,39 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
-      - name: Install dependencies
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: "${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}"
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install Dependencies
         run: yarn install
 
-      - name: Run tests with coverage
+      - name: Run Tests with Coverage
         run: yarn test:ci-coverage
 
-      - name: Upload coverage to quality tool
+      - name: Upload Coverage to Quality Tool
         run: |
-          curl -X POST https://api.quality-tool.com/upload-coverage \
-            -H "Authorization: Bearer ${{ secrets.CODECOV_REPORTER_ID }}" \
-            -F "file=@./coverage/lcov.info"
+          mkdir tmp/
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 -o tmp/cc-test-reporter
+          chmod +x tmp/cc-test-reporter
+
+      - name: Format Code Climate Parallel Coverage
+        run: |
+          tmp/cc-test-reporter format-coverage -t lcov coverage/lcov.info -o "coverage/codeclimate.${{ runner.os }}.json"
         env:
-          CODECOV_REPORTER_ID: ${{ secrets.CODECOV_REPORTER_ID }}
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+
+      - name: Clean Up
+        run: rm -rf tmp/
+
