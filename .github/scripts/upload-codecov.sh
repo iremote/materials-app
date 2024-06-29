@@ -1,8 +1,8 @@
 #!/bin/bash
 
-dir=$(dirname "$0") && app_root=$(cd "$dir"/../.. || exit; pwd)
+# File: .github/scripts/upload-codecov.sh
 
-CC_TEST_REPORTER_ID='d0f0d2c7f5b25c8dc60cb40870156d85af2a0b714a1ab6eee2de7e1ed6123223'
+dir=$(dirname "$0") && app_root=$(cd "$dir"/../.. || exit; pwd)
 
 # Check if CC_TEST_REPORTER_ID is set
 if [ -z "$CC_TEST_REPORTER_ID" ]; then
