@@ -59,7 +59,7 @@
     "workbox-webpack-plugin": "^7.1.0"
   },
   "scripts": {
-    "clean": "rm -rf node_modules && rm -rf package-lock.json && rm -rf yarn.lock",
+    "clean": "rm -rf coverage build node_modules && rm -rf package-lock.json && rm -rf yarn.lock",
     "start": "GENERATE_SOURCEMAP=false react-scripts start",
     "build": "react-scripts build",
     "test": "jest --coverage",
