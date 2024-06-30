@@ -62,7 +62,7 @@
     "clean": "rm -rf coverage build node_modules tmp && rm -rf package-lock.json && rm -rf yarn.lock",
     "start": "GENERATE_SOURCEMAP=false react-scripts start",
     "build": "react-scripts build",
-    "test": "jest --coverage",
+    "test": "react-scripts test",
     "test:ci-coverage": "react-scripts test --coverage --ci --watchAll=false --runInBand",
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
