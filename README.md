@@ -4,7 +4,7 @@ Demo app for visualizing materials data using [XYZ](https://en.wikipedia.org/wik
 
 ![screenshot.png](docs/screenshot.png)
 
-## Architecture
+## Architecture & Tooling Infra
 
 ![webapp-infra.png](docs/webapp-infra.png)
 
