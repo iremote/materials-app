@@ -44,10 +44,11 @@ jobs:
       - name: Run Tests with Coverage
         run: yarn test:ci-coverage
 
-      - name: Upload Coverage to Quality Tool
-        run: ./.github/scripts/upload-codecov.sh
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+      # Enable this step when Codecov is needed.
+      # - name: Upload Coverage to Quality Tool
+      #   run: ./.github/scripts/upload-codecov.sh
+      #   env:
+      #     CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
 
   publish_snapshot:
     if: ${{ github.event.inputs.publish_snapshot == 'true' }}
